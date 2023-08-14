@@ -1,10 +1,14 @@
-version: '3.8'
+version: '3.9'
 
 services:
-  python:
+  docker_python:
     build:
       context: .
       dockerfile: ./docker/python/Dockerfile
-    container_name: python_container      
+    tty: true
+    stdin_open: true
+    image: docker_python_image
+    container_name: docker_python_container
+    working_dir: /src
     volumes:
-      - ./src/:/opt/src
+      - ./src:/src
